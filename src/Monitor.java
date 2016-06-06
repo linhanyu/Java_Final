@@ -8,7 +8,7 @@ import java.awt.event.MouseListener;
 /**
  * Created by Henry on 16/6/6.
  */
-public abstract class Monitor implements MouseListener {
+public abstract class Monitor implements ActionListener {
     JLabel tar;
     Time_in_Flusher flusher;
     Monitor(JLabel j,Time_in_Flusher f){
@@ -16,41 +16,33 @@ public abstract class Monitor implements MouseListener {
         flusher = f;
     }
 
-    protected  abstract Color r_color();
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
+}
+
+class Violate_Monitor extends Monitor{
+    Violate_Monitor(JLabel j,Time_in_Flusher f){
+        super(j,f);
     }
 
-    @Override
-    public void mousePressed(MouseEvent e) {
 
-    }
+
 
     @Override
-    public void mouseReleased(MouseEvent e) {
-        flusher.notify();
-//        System.out.println("FUCK");
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
+    public void actionPerformed(ActionEvent e) {
+        flusher.setIos(new violate());
 
     }
 }
 
-class Blue_Monitor extends Monitor{
-    Blue_Monitor(JLabel j,Time_in_Flusher f){
+class Gradually_Monitor extends Monitor{
+    Gradually_Monitor(JLabel j,Time_in_Flusher f){
         super(j,f);
     }
+
     @Override
-    protected Color r_color() {
-        return Color.BLUE;
+    public void actionPerformed(ActionEvent e) {
+        flusher.setIos(new Guradully());
+
     }
 
 

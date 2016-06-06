@@ -20,17 +20,17 @@ public class Time_in_Flusher extends Thread{
                 Color.red,
                 Color.pink,
         };
+        volatile in_out_Style ios = new violate();
+
     Time_in_Flusher(JLabel c){
         this.c = c;
-
-
     }
 
-    public void setcolor(Color color){
-        Red = color.getRed();
-        Green = color.getGreen();
-        Blue = color.getBlue();
+    public void setIos(in_out_Style ios) {
+        this.ios = ios;
+        System.out.println("hehe");
     }
+
 
 //    public void n(){
 //        notifyAll();
@@ -39,21 +39,49 @@ public class Time_in_Flusher extends Thread{
         try {
 
             for (int j=0;j<7;j%=7){
-                for (int i = 0; i <= 255; i++) {
-                    c.setForeground(new Color(colors[j].getRed(), colors[j].getGreen(), colors[j].getBlue(), i));
-                    TimeUnit.MILLISECONDS.sleep(5);
-                    Thread.yield();
-                }
-
-                for (int i = 255; i >= 0; i--) {
-                    c.setForeground(new Color(colors[j].getRed(), colors[j].getGreen(), colors[j].getBlue(), i));
-                    TimeUnit.MILLISECONDS.sleep(5);
-                    Thread.yield();
-                }
+                ios.in(c,colors[j]);
+                ios.out(c,colors[j]);
                 j++;
+                Thread.yield();
             }
 
         }catch (Throwable e){}
     }
 }
 
+abstract class in_out_Style{
+
+    public abstract void in(JLabel c,Color color) throws Throwable;
+    public abstract void out(JLabel c,Color color) throws Throwable;
+
+}
+
+
+class violate extends in_out_Style{
+
+    public void in(JLabel c,Color color)throws Throwable{
+            c.setForeground(new Color(color.getRed(), color.getGreen(), color.getBlue(), 255));
+            TimeUnit.MILLISECONDS.sleep(5);
+    }
+
+    public void out(JLabel c,Color color) throws Throwable{
+    }
+}
+
+class Guradully extends in_out_Style{
+
+    public void in(JLabel c,Color color)throws Throwable{
+        for (int i = 0; i <= 255; i++) {
+            c.setForeground(new Color(color.getRed(), color.getGreen(), color.getBlue(), i));
+            TimeUnit.MILLISECONDS.sleep(5);
+
+        }
+    }
+
+    public void out(JLabel c,Color color) throws Throwable{
+        for (int i = 255; i >= 0; i--) {
+            c.setForeground(new Color(color.getRed(), color.getGreen(), color.getBlue(), i));
+            TimeUnit.MILLISECONDS.sleep(5);
+        }
+    }
+}

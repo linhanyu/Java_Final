@@ -12,7 +12,9 @@ public class Text {
     public static void main(String[] args) {
         JFrame jf = new JFrame();
         jf.setLayout(new GridLayout());
-        jf.setSize(500,500);
+        jf.setSize(1000,500);
+
+        JPanel jp = new JPanel(new FlowLayout());
 
         JLabel text= new JLabel();
         text.setFont(new Font("微软雅黑",Font.BOLD,72));
@@ -21,12 +23,18 @@ public class Text {
         text.setText("想要女朋友");
 
         Time_in_Flusher t = new Time_in_Flusher(text);
-//        JButton blue = new JButton();
-//        blue.addMouseListener(new Blue_Monitor(text,t));
-//        t.setcolor(Color.BLUE);
 
+        JButton violate = new JButton();
+        violate.setText("效果一");
+        violate.addActionListener(new Violate_Monitor(text,t));
+        jp.add(violate);
 
-//        jf.add(blue,BorderLayout.SOUTH);
+        JButton Gradually = new JButton();
+        Gradually.setText("效果二");
+        Gradually.addActionListener(new Gradually_Monitor(text,t));
+        jp.add(Gradually);
+
+        jf.add(jp,BorderLayout.SOUTH);
         jf.add(text,BorderLayout.CENTER);
 //        jf.setBackground(Color.BLACK);
 
