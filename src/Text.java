@@ -19,7 +19,6 @@ public class Text {
         JLabel text= new JLabel();
         text.setFont(new Font("微软雅黑",Font.BOLD,72));
 //        text.setPreferredSize(new Dimension(100,100));
-//        text.setBackground(Color.BLACK);
         text.setText("想要女朋友");
 
         Time_in_Flusher t = new Time_in_Flusher(text);
