@@ -20,7 +20,7 @@ public class Time_in_Flusher extends Thread{
                 Color.red,
                 Color.pink,
         };
-        volatile in_out_Style ios = new violate();
+        volatile in_out_Style ios = new type();
 
     Time_in_Flusher(JLabel c){
         this.c = c;
@@ -28,7 +28,6 @@ public class Time_in_Flusher extends Thread{
 
     public void setIos(in_out_Style ios) {
         this.ios = ios;
-        System.out.println("hehe");
     }
 
 
@@ -83,5 +82,27 @@ class Guradully extends in_out_Style{
             c.setForeground(new Color(color.getRed(), color.getGreen(), color.getBlue(), i));
             TimeUnit.MILLISECONDS.sleep(5);
         }
+    }
+}
+
+class type extends in_out_Style{
+
+    @Override
+    public void in(JLabel c, Color color) throws Throwable {
+        c.setForeground(color);
+        StringBuffer sb = new StringBuffer();
+        char[] str = c.getText().toCharArray();
+
+        for (int i=0;i<str.length;i++){
+            sb.append(str[i]);
+            TimeUnit.MILLISECONDS.sleep(300);
+            c.setText(sb.toString());
+        }
+
+    }
+
+    @Override
+    public void out(JLabel c, Color color) throws Throwable {
+
     }
 }
