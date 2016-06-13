@@ -23,15 +23,12 @@ public class Text {
 
         Time_in_Flusher t = new Time_in_Flusher(text);
 
-        JButton violate = new JButton();
-        violate.setText("效果一");
-        violate.addActionListener(new Violate_Monitor(text,t));
-        jp.add(violate);
+        Button_Generator bg = new Button_Generator();
+        jp.add(bg.Produce_Button(new Violate_Monitor(text,t),"闪烁效果"));
+        jp.add(bg.Produce_Button(new Gradually_Monitor(text,t),"渐变效果"));
+        jp.add(bg.Produce_Button(new Type_Monitor(text,t),"打字效果"));
+        jp.add(bg.Produce_Button(new Bigger_height_Monitor(text,t),"变大效果"));
 
-        JButton Gradually = new JButton();
-        Gradually.setText("效果二");
-        Gradually.addActionListener(new Gradually_Monitor(text,t));
-        jp.add(Gradually);
 
         jf.add(jp,BorderLayout.SOUTH);
         jf.add(text,BorderLayout.CENTER);
