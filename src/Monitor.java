@@ -61,3 +61,16 @@ class Type_Monitor extends Monitor{
 
 
 }
+
+class Bigger_height_Monitor extends Monitor{
+    Bigger_height_Monitor(Component j,Time_in_Flusher f){
+        super(j,f);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        flusher.setIos(new Bigger_width());
+
+    }
+
+}

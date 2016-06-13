@@ -27,6 +27,7 @@ public class Text {
         jp.add(bg.Produce_Button(new Violate_Monitor(text,t),"闪烁效果"));
         jp.add(bg.Produce_Button(new Gradually_Monitor(text,t),"渐变效果"));
         jp.add(bg.Produce_Button(new Type_Monitor(text,t),"打字效果"));
+        jp.add(bg.Produce_Button(new Bigger_height_Monitor(text,t),"变大效果"));
 
 
         jf.add(jp,BorderLayout.SOUTH);

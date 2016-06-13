@@ -103,6 +103,35 @@ class type extends in_out_Style{
 
     @Override
     public void out(JLabel c, Color color) throws Throwable {
+        TimeUnit.MILLISECONDS.sleep(300);
 
+    }
+}
+
+class Bigger_width extends in_out_Style{
+
+    static int maxium = 72;
+
+    @Override
+    public void in(JLabel c, Color color) throws Throwable {
+        c.setForeground(color);
+
+        for (int i=0;i<=maxium;i++){
+            c.setFont(new Font("微软雅黑",Font.BOLD,i));
+            TimeUnit.MILLISECONDS.sleep(30);
+            Thread.yield();
+        }
+    }
+
+    @Override
+    public void out(JLabel c, Color color) throws Throwable {
+//        Dimension origin = c.getSize();
+//        int height = origin.height;
+//        Dimension begin = new Dimension(0,height);
+//        for (int i=height;i>=1;i--){
+//            begin.setSize(i,height);
+//            c.setSize(begin);
+//            TimeUnit.MILLISECONDS.sleep(1);
+//        }
     }
 }
